@@ -1,0 +1,22 @@
+<svg id="svgJigoulaCards" viewBox="0 0 340 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <!-- Eye Shape Frame -->
+  <path d="M42,70 C78,25 262,25 298,70 C262,115 78,115 42,70Z" fill="#0C1F1D"/>
+  
+  <!-- Loyalty/Signal Lines -->
+  <path d="M122,95 C122,70 143.5,50 170,50 C196.5,50 218,70 218,95" fill="none" stroke="#A6D8D2" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M136,95 C136,77 151.2,62 170,62 C188.8,62 204,77 204,95" fill="none" stroke="#A6D8D2" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M150,95 C150,84 159,75 170,75 C181,75 190,84 190,95" fill="none" stroke="#FAFAF8" stroke-width="4.5" stroke-linecap="round"/>
+  
+  <!-- The Core Point -->
+  <circle cx="170" cy="92" r="7.5" fill="#A6D8D2"/>
+
+  <!-- Typography Lockup -->
+  <!-- "JIGOULA" with exact tracking and color -->
+  <text x="170" y="162" text-anchor="middle" font-family="'Century Gothic', 'Trebuchet MS', system-ui, sans-serif" font-size="34" font-weight="bold" letter-spacing="9" fill="#0C1F1D">JIGOULA</text>
+  
+  <!-- Divider Line -->
+  <line x1="90" y1="178" x2="250" y2="178" stroke="#A6D8D2" stroke-width="1.2" opacity="0.8"/>
+  
+  <!-- "CARDS" with custom spacing -->
+  <text x="170" y="210" text-anchor="middle" font-family="'Century Gothic', 'Trebuchet MS', system-ui, sans-serif" font-size="15" font-weight="normal" letter-spacing="14" fill="#297A74">CARDS</text>
+</svg>

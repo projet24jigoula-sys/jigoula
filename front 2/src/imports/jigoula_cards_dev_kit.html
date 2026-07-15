@@ -1,0 +1,141 @@
+
+<style>
+  .dk { padding: 1rem 0; font-family: var(--font-sans); }
+  .section { margin-bottom: 2rem; }
+  .lbl { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .logo-box { border-radius: var(--border-radius-lg); display: flex; align-items: center; justify-content: center; padding: 28px 20px; }
+  .logo-dark { background: #0C1F1D; }
+  .logo-light { background: #FAFAF8; border: 0.5px solid #E0DDD8; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+  .sw { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; }
+  .sw-color { height: 52px; }
+  .sw-info { padding: 8px 10px; }
+  .sw-name { font-size: 12px; font-weight: 500; color: var(--color-text-primary); }
+  .sw-hex { font-size: 11px; color: var(--color-text-tertiary); font-family: var(--font-mono); margin-top: 2px; cursor: pointer; }
+  .sw-role { font-size: 10px; color: var(--color-text-tertiary); margin-top: 2px; letter-spacing: .04em; }
+  .copied { color: var(--color-text-success) !important; }
+</style>
+
+<div class="dk">
+  <div class="section">
+    <div class="lbl">Logo — SVG</div>
+    <div class="logo-row">
+      <div class="logo-box logo-dark">
+        <svg id="logo-dark-svg" viewBox="0 0 340 168" width="260" height="128" xmlns="http://www.w3.org/2000/svg">
+          <path d="M82,58 C108,22 232,22 258,58 C232,94 108,94 82,58Z" fill="#A6D8D2"/>
+          <path d="M170,81 C168,71 168,62 170,53" fill="none" stroke="#0C1F1D" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M170,57 C160,48 153,44 148,38" fill="none" stroke="#0C1F1D" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M170,53 C170,45 170,39 170,35" fill="none" stroke="#0C1F1D" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M170,57 C180,48 187,44 192,38" fill="none" stroke="#0C1F1D" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="170" cy="67" r="8.5" fill="#ffffff"/>
+          <circle cx="170" cy="67" r="3.8" fill="#0C1F1D"/>
+          <text x="170" y="122" text-anchor="middle" font-family="'Century Gothic','Trebuchet MS',sans-serif" font-size="27" font-weight="700" letter-spacing="6" fill="#ffffff">JIGOULA</text>
+          <line x1="114" y1="131" x2="226" y2="131" stroke="#A6D8D2" stroke-width="0.7"/>
+          <text x="170" y="150" text-anchor="middle" font-family="'Century Gothic','Trebuchet MS',sans-serif" font-size="10.5" font-weight="400" letter-spacing="8" fill="#A6D8D2">CARDS</text>
+        </svg>
+      </div>
+      <div class="logo-box logo-light">
+        <svg id="logo-light-svg" viewBox="0 0 340 168" width="260" height="128" xmlns="http://www.w3.org/2000/svg">
+          <path d="M82,58 C108,22 232,22 258,58 C232,94 108,94 82,58Z" fill="#0C1F1D"/>
+          <path d="M170,81 C168,71 168,62 170,53" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M170,57 C160,48 153,44 148,38" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M170,53 C170,45 170,39 170,35" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M170,57 C180,48 187,44 192,38" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="170" cy="67" r="8.5" fill="#A6D8D2"/>
+          <circle cx="170" cy="67" r="3.8" fill="#0C1F1D"/>
+          <text x="170" y="122" text-anchor="middle" font-family="'Century Gothic','Trebuchet MS',sans-serif" font-size="27" font-weight="700" letter-spacing="6" fill="#0C1F1D">JIGOULA</text>
+          <line x1="114" y1="131" x2="226" y2="131" stroke="#A6D8D2" stroke-width="0.7"/>
+          <text x="170" y="150" text-anchor="middle" font-family="'Century Gothic','Trebuchet MS',sans-serif" font-size="10.5" font-weight="400" letter-spacing="8" fill="#297A74">CARDS</text>
+        </svg>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+      <button onclick="dlSvg('logo-dark-svg','jigoula-cards-dark')" style="font-size:12px;padding:8px 16px">Download dark SVG</button>
+      <button onclick="dlSvg('logo-light-svg','jigoula-cards-light')" style="font-size:12px;padding:8px 16px">Download light SVG</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="lbl">Brand palette — click to copy hex</div>
+    <div class="swatches">
+      <div class="sw">
+        <div class="sw-color" style="background:#0C1F1D"></div>
+        <div class="sw-info">
+          <div class="sw-name">Deep Forest</div>
+          <div class="sw-hex" onclick="copyHex(this,'#0C1F1D')">#0C1F1D</div>
+          <div class="sw-role">Primary / background</div>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="sw-color" style="background:#A6D8D2;border-bottom:0.5px solid #ddd"></div>
+        <div class="sw-info">
+          <div class="sw-name">Aerial Mint</div>
+          <div class="sw-hex" onclick="copyHex(this,'#A6D8D2')">#A6D8D2</div>
+          <div class="sw-role">Brand accent</div>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="sw-color" style="background:#297A74"></div>
+        <div class="sw-info">
+          <div class="sw-name">Deep Teal</div>
+          <div class="sw-hex" onclick="copyHex(this,'#297A74')">#297A74</div>
+          <div class="sw-role">Secondary / text</div>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="sw-color" style="background:#FAFAF8;border-bottom:0.5px solid #ddd"></div>
+        <div class="sw-info">
+          <div class="sw-name">Pure White</div>
+          <div class="sw-hex" onclick="copyHex(this,'#FAFAF8')">#FAFAF8</div>
+          <div class="sw-role">Light background</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="lbl">CSS variables — copy paste ready</div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px 16px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);line-height:1.9;border:0.5px solid var(--color-border-tertiary)">
+      <span style="color:var(--color-text-tertiary)">:root {</span><br>
+      &nbsp;&nbsp;--color-primary: #0C1F1D;<br>
+      &nbsp;&nbsp;--color-accent: #A6D8D2;<br>
+      &nbsp;&nbsp;--color-secondary: #297A74;<br>
+      &nbsp;&nbsp;--color-bg-light: #FAFAF8;<br>
+      &nbsp;&nbsp;--color-bg-page: #F2F1EE;<br>
+      <span style="color:var(--color-text-tertiary)">}</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="lbl">Tailwind config</div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px 16px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);line-height:1.9;border:0.5px solid var(--color-border-tertiary)">
+      <span style="color:var(--color-text-tertiary)">colors: {</span><br>
+      &nbsp;&nbsp;primary: <span style="color:#297A74">'#0C1F1D'</span>,<br>
+      &nbsp;&nbsp;accent: <span style="color:#297A74">'#A6D8D2'</span>,<br>
+      &nbsp;&nbsp;secondary: <span style="color:#297A74">'#297A74'</span>,<br>
+      &nbsp;&nbsp;surface: <span style="color:#297A74">'#FAFAF8'</span>,<br>
+      &nbsp;&nbsp;page: <span style="color:#297A74">'#F2F1EE'</span>,<br>
+      <span style="color:var(--color-text-tertiary)">}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyHex(el, hex) {
+  navigator.clipboard.writeText(hex).then(() => {
+    el.textContent = 'Copied!';
+    el.classList.add('copied');
+    setTimeout(() => { el.textContent = hex; el.classList.remove('copied'); }, 1500);
+  });
+}
+function dlSvg(id, name) {
+  const el = document.getElementById(id);
+  const data = '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(el);
+  const blob = new Blob([data], {type: 'image/svg+xml'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name + '.svg';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+</script>

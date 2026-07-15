@@ -1,0 +1,10 @@
+=== USERS ===
+  email=admin@loyalty.tn  role=ADMIN  name=Administrateur Principal
+  email=manoubaaziz7@gmail.com  role=CLIENT  name=Jigoula Fix
+  email=magukochebaane@gmail.com  role=CLIENT  name=Mehdi Chebaane
+  email=manoubaaziz@gmail.com  role=CLIENT  name=Aziz Manouba
+Total users: 4
+
+=== SHOPS ===
+  id=6a233bc4a04d63e43e8fe551 | name=Puntacana café | qr_token=EN3iP0EDk3spdea_VePGL1RmZ1JvB0Sv | active=True
+Total shops: 1

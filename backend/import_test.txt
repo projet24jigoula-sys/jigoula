@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import pydantic_core
+ModuleNotFoundError: No module named 'pydantic_core'

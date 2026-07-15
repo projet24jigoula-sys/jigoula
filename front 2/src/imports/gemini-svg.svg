@@ -1,0 +1,17 @@
+<svg id="svgCardsMinimalTierLight" viewBox="0 0 340 168" width="320" height="159" xmlns="http://www.w3.org/2000/svg">
+  <!-- The Identical Family Eye Shape Frame (Reversed) -->
+  <path d="M82,58 C108,22 232,22 258,58 C232,94 108,94 82,58Z" fill="#0C1F1D"/>
+  
+  <!-- Premium Tier Lines (Flipped for Contrast) -->
+  <path d="M142,75 C142,60 154,48 170,48 C186,48 198,60 198,75" fill="none" stroke="#A6D8D2" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M150,75 C150,64 159,55 170,55 C181,55 190,64 190,75" fill="none" stroke="#A6D8D2" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M158,75 C158,68 163,63 170,63 C177,63 182,68 182,75" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- The Perfect Core Point -->
+  <circle cx="170" cy="73" r="4.5" fill="#A6D8D2"/>
+
+  <!-- Exact Typographic Family Lockup -->
+  <text x="170" y="122" text-anchor="middle" font-family="'Century Gothic','Trebuchet MS',sans-serif" font-size="27" font-weight="700" letter-spacing="6" fill="#0C1F1D">JIGOULA</text>
+  <line x1="114" y1="131" x2="226" y2="131" stroke="#A6D8D2" stroke-width="0.7"/>
+  <text x="170" y="150" text-anchor="middle" font-family="'Century Gothic','Trebuchet MS',sans-serif" font-size="10.5" font-weight="400" letter-spacing="8" fill="#297A74">CARDS</text>
+</svg>

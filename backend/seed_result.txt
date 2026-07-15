@@ -1,0 +1,18 @@
+PFE Seeder starting...
+
+Admin password set  -> admin@loyalty.tn / admin123
+Merchant updated    -> merchant@puntacana.tn / merchant123
+Shop linked         -> 'Puntacana caf├⌐'
+  QR token: EN3iP0EDk3spdea_VePGL1RmZ1JvB0Sv
+  Scan URL: http://localhost:5174/scan/EN3iP0EDk3spdea_VePGL1RmZ1JvB0Sv
+Loyalty program     -> already active (no change)
+Client password set -> manoubaaziz7@gmail.com / client123
+
+=================================================
+DEMO CREDENTIALS FOR PFE:
+  Admin   : admin@loyalty.tn       / admin123
+  Merchant: merchant@puntacana.tn  / merchant123
+  Client  : manoubaaziz7@gmail.com / client123
+
+  Scan URL: http://localhost:5174/scan/EN3iP0EDk3spdea_VePGL1RmZ1JvB0Sv
+=================================================
