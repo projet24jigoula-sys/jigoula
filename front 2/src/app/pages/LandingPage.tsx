@@ -224,7 +224,7 @@ export default function LandingPage() {
                   {l.cta1} <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  to="/client/demo"
+                  to="/login"
                   className="inline-flex items-center justify-center gap-2 bg-white/6 border border-white/14 text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-colors"
                 >
                   {l.cta2} <Smartphone className="w-4 h-4" />
@@ -305,7 +305,7 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <Link to="/client/demo" className="flex items-center gap-1 text-[#297A74] text-sm font-semibold hover:gap-2 transition-all">
+              <Link to="/login" className="flex items-center gap-1 text-[#297A74] text-sm font-semibold hover:gap-2 transition-all">
                 {l.viewClient} <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router';
+import { toast } from 'sonner';
 import * as Tabs from '@radix-ui/react-tabs';
 import { ArrowRight, Eye, EyeOff, Store, Building2, AlertCircle } from 'lucide-react';
 import { JigoulaLogoFull } from '../components/JigoulaLogo';
@@ -9,13 +10,18 @@ import { useAuth } from '../context/AuthContext';
 export default function AuthPage() {
   const navigate = useNavigate();
   const { t, lang } = useLang();
-  const { login } = useAuth();
+  const { login, registerClient } = useAuth();
   const a = t.auth;
+  const [searchParams] = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
+  const [isRegister, setIsRegister] = useState(searchParams.get('register') === 'true');
   const [userType, setUserType] = useState<'merchant' | 'partner' | 'client'>('client');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -24,14 +30,37 @@ export default function AuthPage() {
     setError('');
     setLoading(true);
     try {
-      const user = await login(email, password);
+      let user;
+      if (isRegister && userType === 'client') {
+        user = await registerClient({
+          first_name: firstName,
+          last_name: lastName,
+          phone: phone,
+          email: email,
+          password: password
+        });
+        toast.success("Compte créé avec succès !");
+      } else {
+        user = await login(email, password);
+      }
+
       // Determine where they should go based on their role
       if (user.role === 'ADMIN') {
         navigate('/partner');
       } else if (user.role === 'MERCHANT') {
         navigate('/merchant');
       } else if (user.role === 'CLIENT') {
-        navigate('/'); // Landing or redirect parameter if needed
+        try {
+          const { apiRequest } = await import('../../api/api');
+          const visited = await apiRequest('/client/visited-shops');
+          if (visited && visited.shops && visited.shops.length === 1) {
+            navigate(`/client/${visited.shops[0].shop_id}`);
+          } else {
+            navigate('/client/dashboard');
+          }
+        } catch (e) {
+          navigate('/client/dashboard');
+        }
       }
     } catch (err: any) {
       setError(err.message || 'Login failed');
@@ -71,11 +100,26 @@ export default function AuthPage() {
               <Tabs.Content key={type} value={type}>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {error && (
-                    <div className="bg-red-50 text-red-500 p-3 rounded-xl text-sm flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4" />
+                    <div className="bg-red-50 text-red-500 p-3 rounded-xl text-sm flex items-center gap-2 mb-4">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
                       {error}
                     </div>
                   )}
+
+                  {isRegister && type === 'client' && (
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div>
+                        <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Prénom" required className="w-full border border-[#E0DDD8] bg-[#F2F1EE] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#A6D8D2] focus:ring-2 focus:ring-[#A6D8D2]/20 text-[#0C1F1D]" />
+                      </div>
+                      <div>
+                        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Nom" required className="w-full border border-[#E0DDD8] bg-[#F2F1EE] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#A6D8D2] focus:ring-2 focus:ring-[#A6D8D2]/20 text-[#0C1F1D]" />
+                      </div>
+                      <div className="col-span-2">
+                        <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="N° Téléphone (+216...)" required className="w-full border border-[#E0DDD8] bg-[#F2F1EE] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#A6D8D2] focus:ring-2 focus:ring-[#A6D8D2]/20 text-[#0C1F1D]" />
+                      </div>
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-sm font-medium text-[#0C1F1D] mb-1.5">
                       {type === 'merchant' ? a.emailLabel : a.emailPartner}
@@ -104,11 +148,18 @@ export default function AuthPage() {
                       </button>
                     </div>
                   </div>
-                  <div className="flex justify-end">
+                  <div className="flex justify-between items-center mt-3 mb-5">
+                    {type === 'client' ? (
+                      <button type="button" onClick={() => setIsRegister(!isRegister)} className="text-xs text-[#297A74] hover:underline">
+                        {isRegister ? "Déjà membre ? Se connecter" : "Créer un compte client"}
+                      </button>
+                    ) : (
+                      <span />
+                    )}
                     <a href="#" className="text-xs text-[#297A74] hover:underline">{a.forgot}</a>
                   </div>
                   <button type="submit" disabled={loading} className="w-full bg-[#0C1F1D] text-[#A6D8D2] py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-[#1a3533] transition-colors shadow-sm disabled:opacity-50">
-                    {loading ? '...' : a.submit} {!loading && <ArrowRight className="w-4 h-4" />}
+                    {loading ? '...' : (isRegister && type === 'client' ? "S'inscrire" : a.submit)} {!loading && <ArrowRight className="w-4 h-4" />}
                   </button>
                 </form>
               </Tabs.Content>

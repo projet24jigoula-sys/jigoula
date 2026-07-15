@@ -27,8 +27,20 @@ export default function ClientPage() {
   useEffect(() => {
     async function loadData() {
       try {
-        // GET /client/shops/{shop_id} returns ClientShopDetailsResponse: { shop, visits }
-        const details = await apiRequest(`/client/shops/${shopId}`);
+        let targetShopId = shopId;
+
+        // If the user hasn't visited any shops, just fetch their first visited shop, if they have one.
+        if (targetShopId === 'demo' || !targetShopId) {
+          const visited = await apiRequest('/client/visited-shops').catch(() => null);
+          if (visited && visited.shops && visited.shops.length > 0) {
+            targetShopId = visited.shops[0].shop_id;
+          } else {
+            setLoading(false);
+            return; // Will trigger the "Shop not found" block
+          }
+        }
+
+        const details = await apiRequest(`/client/shops/${targetShopId}`);
         setShop(details.shop);          // ClientVisitedShopResponse
         setProgress(details.shop?.loyalty ?? null);  // LoyaltyProgressResponse nested
         setHistory(details.visits ?? []);  // ScanHistoryResponse[]
